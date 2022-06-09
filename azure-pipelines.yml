@@ -12,10 +12,10 @@ variables:
   azureSubscription: '303efe58-6861-4dec-9ef8-2fc56b711b0f'
 
   # Web app name
-  webAppName: 'todo-rest-api-demo'
+  webAppName: 'paynet-demo-todo-rest-api'
 
   # Environment name
-  environmentName: 'dev'
+  environmentName: 'paynet-demo'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
