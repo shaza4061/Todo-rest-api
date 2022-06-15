@@ -33,6 +33,7 @@ public class JwtProvider {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
+
     public String getUserUsernameFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(jwtSecret)
@@ -40,17 +41,15 @@ public class JwtProvider {
                 .getBody();
         return claims.getSubject();
     }
+
     public boolean validateToken(String authToken) {
         try {
             Jwts.parser()
                     .setSigningKey(jwtSecret)
                     .parseClaimsJws(authToken);
             return true;
-        } catch (SignatureException ex) {
-        } catch (MalformedJwtException ex) {
-        } catch (ExpiredJwtException ex) {
-        } catch (UnsupportedJwtException ex) {
-        } catch (IllegalArgumentException ex) {
+        } catch (SignatureException | MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
         }
         return false;
     }
